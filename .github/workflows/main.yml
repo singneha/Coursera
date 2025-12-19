@@ -1,0 +1,12 @@
+name: "Update Shared Git Folder"
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Databricks Repo
+        run: |
+          databricks repos update --path "/Workspace/Shared/Coursera" --branch "main"
