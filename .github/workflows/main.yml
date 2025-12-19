@@ -20,4 +20,4 @@ jobs:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-          databricks repos update "/Workspace/Shared/Production/your_repo" --branch "main"
+          databricks repos update "/Workspace/Shared/Coursera" --branch "main"
