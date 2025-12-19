@@ -7,6 +7,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # --- THIS IS THE MISSING STEP ---
+      - name: Install Databricks CLI
+        uses: databricks/setup-cli@main
+
       - name: Update Databricks Repo
+        env:
+          # Use your secrets for authentication
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         run: |
-          databricks repos update --path "/Workspace/Shared/Coursera" --branch "main"
+          databricks repos update "/Workspace/Shared/Production/your_repo" --branch "main"
